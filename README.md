@@ -1,7 +1,12 @@
-# puntastic-burger
+# Puntastic Burgers
 
 ## Author:
 Anthony Johnson, Jason Dormier, Lauren Sierra, Glenn Clark
 
-## Project Management Board
-Google Drive Link: https://drive.google.com/drive/folders/1Xgkl5-JIBgr2H3pGzWJomDnNlhsu6SoQ?usp=sharing
+
+
+## Wireframes
+![](img/Index.jpg)
+![](img/about-us.jpg)
+![](img/burger-constructor (1).jpg)
+![](img/checkout-page.jpg)
