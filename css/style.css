@@ -1,0 +1,97 @@
+/* ----------default styles -----------*/
+
+html {
+  color: black;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+
+logo,
+sidebar,
+footer,
+main,
+nav,
+section{
+  display: block;
+  /* border: solid black 1px; */ /* just for building purposes */
+}
+
+
+/*-----------  sidebar styling ---------*/
+
+sidebar{
+  position: fixed;
+  width:350px;
+  height: 100%;
+}
+
+sidebar logo img{
+  margin: 10px 0 0 50px;
+}
+
+sidebar h2{
+  font-size: 2em;
+}
+
+sidebar h3{
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 1.2em;
+}
+
+sidebar ul{
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+sidebar ul li{
+  margin-top: 5px;
+}
+
+sidebar img{
+  display:inline-block
+}
+
+sidebar footer{
+  margin-top: 200px;
+}
+
+sidebar footer p{
+  margin-left: 30px;
+}
+
+/*------------   main styling   ---------- */
+main{
+  width: 960px;
+  margin: 0 auto 0 auto;
+  padding-left: 350px;
+}
+
+main h2{
+  font-size: 2em;
+  text-align: center;
+}
+main p{
+  text-align: center;
+  
+}
+main section div{
+  width:250px;
+  display: inline-block;
+  margin: 30px;
+}
+
+main section div h2{
+  font-size: 2em;
+  text-align: center;
+}
+
+main section div img{
+  margin-top:10px;
+}
