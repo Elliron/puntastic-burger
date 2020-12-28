@@ -4,7 +4,7 @@
 var bunsElement = document.getElementById('buns');
 var meatsElement = document.getElementById('meats');
 var cheeseElement = document.getElementById('cheese');
-var vegtablesElement = document.getElementById('vegtables');
+var vegetablesElement = document.getElementById('vegetables');
 var saucesElement = document.getElementById('sauces');
 var sidesElement = document.getElementById('sides');
 var menu = document.getElementById('menu');
@@ -24,7 +24,7 @@ var ingredients = {
 
   cheeseArr: ['Chedder', 'American', 'Blue Cheese', 'Gouda', 'Pepper Jack', 'Swiss'],
 
-  vegtablesArr: ['Pickles', 'Totmato', 'Onion', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'],
+  vegetablesArr: ['Pickles', 'Totmato', 'Onion', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'],
 
   saucesArr: ['Ketchup', 'Mustard', 'Mayo', 'BBQ', 'Caribbean Jerk', 'Chipotle', 'Sriracha', 'Southwest', 'Ghost Pepper'],
 
@@ -32,11 +32,11 @@ var ingredients = {
 };
 
 function BurgerConstructor() {
-  this.bun = [];
+  this.buns = [];
   this.burger = [];
   this.meats = [];
   this.cheese = [];
-  this.vegatables = [];
+  this.vegetables = [];
   this.sauces = [];
   this.sides = [];
   burgerConstructor.push(this);
@@ -44,6 +44,7 @@ function BurgerConstructor() {
 
 function menuBuilder(parentElement, arrContent) {
   //for loop to build out the menus
+  console.log(arrContent);
   for (var i = 0; i < arrContent.length; i++) {
     var menuElement = document.createElement('li');
     menuElement.textContent = arrContent[i];
@@ -58,7 +59,7 @@ function renderMenu() {
   menuBuilder(bunsElement, ingredients.bunsArr);
   menuBuilder(meatsElement, ingredients.meatsArr);
   menuBuilder(cheeseElement, ingredients.cheeseArr);
-  menuBuilder(vegtablesElement, ingredients.vegtablesArr);
+  menuBuilder(vegetablesElement, ingredients.vegetablesArr);
   menuBuilder(saucesElement, ingredients.saucesArr);
   menuBuilder(sidesElement, ingredients.sidesArr);
 }
@@ -106,6 +107,7 @@ function addIngredientToBurger(ingredient, ingredientArray, ingredientId) {
     }
   }
 }
+
 function burgerBuilderUpdater() {
   var divElement = document.createElement('div');
   //divElement.className = clickedMenuItem;
