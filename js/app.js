@@ -20,7 +20,7 @@ var burgerConstructor = [];
 var bunsArr = ['brown', 'yellow', 'Sesame seed', 'Brioche', 'Pretzel', 'Hawaiian roll', 'Kaiser roll'];
 var meatsArr = ['Single Patty', 'Double Patty', 'Triple Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg', 'Pull Pork'];
 var cheeseArr = ['Chedder', 'American', 'Blue Cheese', 'Gouda', 'Pepper Jack', 'Swiss'];
-var vegtablesArr = ['Pickles', 'Totamto', 'Onion', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'];
+var vegtablesArr = ['Pickles', 'Totmato', 'Onion', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'];
 var saucesArr = ['Ketchup', 'Mustard', 'Mayo', 'BBQ', 'Caribbean Jerk', 'Chipotle', 'Sriracha', 'Southwest', 'Ghost Pepper'];
 var sidesArr = ['Fries', 'Tots', 'Onion Rings', 'Sweet Potato Fries', 'Waffle Fries', 'Soft Drink', 'Tea', 'Lemonade', 'Water'];
 
@@ -29,7 +29,7 @@ var sidesArr = ['Fries', 'Tots', 'Onion Rings', 'Sweet Potato Fries', 'Waffle Fr
 console.log(allBurgerElements); */
 
 function BurgerConstructor() {
-  this.bun = '';
+  this.bun = [];
   this.burger = [];
   this.meats = [];
   this.cheese = [];
@@ -147,6 +147,7 @@ function burgerBuilderUpdater() {
   //zindex will use the array index of the element.
   divElement.style.zIndex = customBurger.burger.length + 1;
 
+  //add x for end user to delete ingredients
   var liElement = document.createElement('li');
   liElement.id = clickedMenuItem;
   liElement.textContent = clickedMenuItem;
