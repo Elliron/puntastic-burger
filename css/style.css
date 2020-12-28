@@ -94,7 +94,10 @@ main section div h2{
 
 main section div img{
   margin-top:10px;
-}
+
+} 
+
+
 
 /*------------  burger-constructor main styling   ---------- */
 .base{
@@ -159,3 +162,4 @@ main section div img{
   color: #D91828;
   cursor:pointer;
 }
+
