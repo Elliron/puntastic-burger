@@ -17,16 +17,19 @@ var burgerConstructor = [];
 
 
 //global arrays use to populate the igridents menu and also make it easier to build the burger.
-var bunsArr = ['brown', 'yellow', 'Sesame seed', 'Brioche', 'Pretzel', 'Hawaiian roll', 'Kaiser roll'];
-var meatsArr = ['Single Patty', 'Double Patty', 'Triple Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg', 'Pull Pork'];
-var cheeseArr = ['Chedder', 'American', 'Blue Cheese', 'Gouda', 'Pepper Jack', 'Swiss'];
-var vegtablesArr = ['Pickles', 'Totmato', 'Onion', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'];
-var saucesArr = ['Ketchup', 'Mustard', 'Mayo', 'BBQ', 'Caribbean Jerk', 'Chipotle', 'Sriracha', 'Southwest', 'Ghost Pepper'];
-var sidesArr = ['Fries', 'Tots', 'Onion Rings', 'Sweet Potato Fries', 'Waffle Fries', 'Soft Drink', 'Tea', 'Lemonade', 'Water'];
+var ingredients = {
+  bunsArr: ['brown', 'yellow', 'Sesame seed', 'Brioche', 'Pretzel', 'Hawaiian roll', 'Kaiser roll'],
 
-//combining all burger toppings into one array except buns and sides
-/* var allBurgerElements = meatsArr.concat(veggieArr.concat(saucesArr));
-console.log(allBurgerElements); */
+  meatsArr: ['Single Patty', 'Double Patty', 'Triple Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg', 'Pull Pork'],
+
+  cheeseArr: ['Chedder', 'American', 'Blue Cheese', 'Gouda', 'Pepper Jack', 'Swiss'],
+
+  vegtablesArr: ['Pickles', 'Totmato', 'Onion', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'],
+
+  saucesArr: ['Ketchup', 'Mustard', 'Mayo', 'BBQ', 'Caribbean Jerk', 'Chipotle', 'Sriracha', 'Southwest', 'Ghost Pepper'],
+
+  sidesArr: ['Fries', 'Tots', 'Onion Rings', 'Sweet Potato Fries', 'Waffle Fries', 'Soft Drink', 'Tea', 'Lemonade', 'Water'],
+};
 
 function BurgerConstructor() {
   this.bun = [];
@@ -52,12 +55,12 @@ function menuBuilder(parentElement, arrContent) {
 
 //render out each menu
 function renderMenu() {
-  menuBuilder(bunsElement, bunsArr);
-  menuBuilder(meatsElement, meatsArr);
-  menuBuilder(cheeseElement, cheeseArr);
-  menuBuilder(vegtablesElement, vegtablesArr);
-  menuBuilder(saucesElement, saucesArr);
-  menuBuilder(sidesElement, sidesArr);
+  menuBuilder(bunsElement, ingredients.bunsArr);
+  menuBuilder(meatsElement, ingredients.meatsArr);
+  menuBuilder(cheeseElement, ingredients.cheeseArr);
+  menuBuilder(vegtablesElement, ingredients.vegtablesArr);
+  menuBuilder(saucesElement, ingredients.saucesArr);
+  menuBuilder(sidesElement, ingredients.sidesArr);
 }
 
 function eventClick(event) {
@@ -65,28 +68,21 @@ function eventClick(event) {
   //getting the html class the user is clicking on and storing as varible
   var clickClass = event.target.classList[0];
   //getting the id of the parentelement
-  //var clickParentId = event.target.parentNode.id;
+  var clickParentId = event.target.parentNode.id;
   //getting the id of the clicked element
   var clickId = event.target.id;
   //getting the name of the ingredient
   clickedMenuItem = event.target.innerHTML;
 
-  //console.log(`this is a test of test ${clickId}Arr`);
-  console.log(clickId);
-  //console.log(clickClass);
-  console.log(clickedMenuItem);
-  //console.log(`${clickId}Arr`);
-
+  var str = clickParentId + 'Arr';
+  console.log(str);
   //if what user clicks on is not .menu-item return nothing, else return the ingredient
   if (clickClass === 'menu-item') {
-    addMeatsToBurger(clickedMenuItem, meatsArr);
-    addcheeseToBurger(clickedMenuItem, cheeseArr);
-    addVegtablesToBurger(clickedMenuItem, vegtablesArr);
-    addSaucesToBurger(clickedMenuItem, saucesArr);
+    addIngredientToBurger(clickedMenuItem, str, clickParentId);
     burgerBuilderUpdater();
-    console.log(`var inside clickevent ${clickedMenuItem}`);
-    console.log(customBurger.burger);
-    console.log(burgerConstructor);
+    //console.log(`var inside clickevent ${clickedMenuItem}`);
+    //console.log(customBurger.burger);
+    //console.log(burgerConstructor);
   }
   if (clickId === clickedMenuItem) {
     removeItemfromOrder(clickedMenuItem, clickId);
@@ -97,46 +93,19 @@ function eventClick(event) {
 
 }
 //we will need to create some logic that only allows user to click on one bun. Something like if bunSelected is true then alert user 'you cannot select another bun until you remove the current bun from your cart.
+
 //something like if (customerBurger.bun.length - 1) select a bun, else bun already selected... the same logic can be applied to toppings. This could be used to calculate charging $0.50 per addtional ingredient.
-//figure out how to make the array dynamic
 
-//ask Ryan or TA or Ryan how to dry this out. The issue is the reference to the customBurger.array - 
-function addMeatsToBurger(ingredient, ingredientArray) {
-  for (var i in ingredientArray) {
-    if (ingredient === ingredientArray[i]) {
-      customBurger.burger.push(ingredientArray[i]);
-      customBurger.meats.push(ingredientArray[i]);
-    }
-  }
-  //if (customBurger.meats.length < 1)
-}
-
-function addcheeseToBurger(ingredient, ingredientArray) {
-  for (var i in ingredientArray) {
-    if (ingredient === ingredientArray[i]) {
-      customBurger.burger.push(ingredientArray[i]);
-      customBurger.cheese.push(ingredientArray[i]);
+function addIngredientToBurger(ingredient, ingredientArray, ingredientId) {
+  for (var i in ingredients[ingredientArray]) {
+    if (ingredient === ingredients[ingredientArray][i]) {
+      console.log(ingredients[ingredientArray][i]);
+      //console.log(ingredientId);
+      customBurger.burger.push(ingredients[ingredientArray][i]);
+      customBurger[ingredientId].push(ingredients[ingredientArray][i]);
     }
   }
 }
-
-function addVegtablesToBurger(ingredient, ingredientArray) {
-  for (var i in ingredientArray) {
-    if (ingredient === ingredientArray[i]) {
-      customBurger.burger.push(ingredientArray[i]);
-      customBurger.vegatables.push(ingredientArray[i]);
-    }
-  }
-}
-function addSaucesToBurger(ingredient, ingredientArray) {
-  for (var i in ingredientArray) {
-    if (ingredient === ingredientArray[i]) {
-      customBurger.burger.push(ingredientArray[i]);
-      customBurger.sauces.push(ingredientArray[i]);
-    }
-  }
-}
-
 function burgerBuilderUpdater() {
   var divElement = document.createElement('div');
   //divElement.className = clickedMenuItem;
@@ -167,7 +136,7 @@ function removeItemfromOrder(ingredient, name) {
   }
   var liElement = document.getElementById(name);
   liElement.parentNode.removeChild(liElement);
-  console.log(customBurger.burger);
+  //console.log(customBurger.burger);
   //divElement.parentNode.removeChild(divElement);
 }
 
