@@ -20,7 +20,7 @@ var burgerConstructor = [];
 
 //global arrays use to populate the igridents menu and also make it easier to build the burger.
 var ingredients = {
-  bunsArr: ['brown', 'yellow', 'Sesame seed', 'Brioche', 'Pretzel', 'Hawaiian roll', 'Kaiser roll'],
+  bunsArr: ['Sesame seed', 'Brioche', 'Pretzel', 'Hawaiian roll', 'Kaiser roll'],
 
   meatsArr: ['Single Patty', 'Double Patty', 'Triple Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg', 'Pull Pork'],
 
@@ -75,6 +75,9 @@ function eventClick(event) {
   var clickId = event.target.id;
   //getting the name of the ingredient
   clickedMenuItem = event.target.innerHTML;
+  var clickedMenuItemfiltered = clickedMenuItem.replace(/\s+/g, '-').toLowerCase();
+
+  console.log(clickedMenuItemfiltered);
 
   var str = clickParentId + 'Arr';
   //if what user clicks on is not .menu-item return nothing, else return the ingredient
@@ -89,12 +92,12 @@ function eventClick(event) {
       console.log('Bun-jour! Please select a bun before continuing!');
     } else if (clickParentId === 'buns') {
       addIngredientToBurger(clickedMenuItem, str, clickParentId);
-      burgerBuilderUpdater();
+      burgerBuilderUpdater(clickedMenuItemfiltered);
     }
   } else {
     if (clickClass === 'menu-item') {
       addIngredientToBurger(clickedMenuItem, str, clickParentId);
-      burgerBuilderUpdater();
+      burgerBuilderUpdater(clickedMenuItemfiltered);
       //console.log(`var inside clickevent ${clickedMenuItem}`);
       //console.log(customBurger.burger);
       //console.log(burgerConstructor);
@@ -135,13 +138,15 @@ function addIngredientToBurger(ingredient, ingredientArray, ingredientId) {
   }
 }
 
-function burgerBuilderUpdater() {
-  var divElement = document.createElement('div');
+function burgerBuilderUpdater(image) {
+  var divElement = document.createElement('img');
   //divElement.className = clickedMenuItem;
-  divElement.id = 'div' + clickedMenuItem;
+  divElement.id = image;
+  divElement.src = `img/${image}.png`;
   burgerBuilder.appendChild(divElement);
   divElement.style.top = `${100}px`; //this needs to be dynamic
-  divElement.style.backgroundColor = clickedMenuItem; // this should be background image
+
+  // divElement.style.backgroundImage = `../imgs/${image}.png`; // this should be background image
   //zindex will use the array index of the element.
   divElement.style.zIndex = customBurger.burger.length + 1;
 
