@@ -196,3 +196,62 @@ main section div img{
   cursor:pointer;
 }
 
+/*------------  checkout main styling   ---------- */
+
+.order-summary {
+  font-family: 'Bangers', cursive;
+  margin: auto;
+  margin-top: 2em;
+  width: 400px;
+  text-align: center;
+  color: #ffa600;
+  letter-spacing: .5em;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: white;
+  /* background-color: #1CA698; */
+}
+.order-summary h3 {
+  font-size: 3em;
+  font-weight: bold;
+  padding: .1em;
+  border: solid black 1px;
+  background-color: #D91828;
+}
+
+.order-summary h4 {
+  font-size: 3em;
+  font-weight: bold;
+  border: solid black 1px;
+  border-top: 0px;
+  border-bottom: 0px;
+  padding: .1em;
+  background-color: #1CA698;
+}
+.order-summary ul {
+  border: solid black 1px;
+  border-top: 0px;
+  background-color: #1CA698;
+  padding-bottom: 20px;
+}
+.order-summary li {
+  padding: .2em;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+.order-summary button {
+  font-family: 'Bangers', cursive;
+  font-size: 5em;
+  font-weight: bold;
+  margin: auto;
+  width: 400px;
+  color: #ffa600;
+  letter-spacing: .08em;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  background-color: #D91828;
+}
