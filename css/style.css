@@ -181,13 +181,41 @@ main section div img{
   left: 350px;
 
 }
-
 #burger-order h3{
   display: inline-block;
+  font-size: 1.32em;
+  font-weight: bold;
+  font-family: 'Bangers', cursive;
+  margin-top: 30px;
+  list-style: circle;
+  list-style-position: inside;
+  color: #ffa600;
+  letter-spacing: .06em;
+  text-decoration: none;  
+  text-shadow: 2px 2px black;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
 }
 
 #burger-order li{
   display: inline-block;
+  font-family: 'Bangers', cursive;
+  margin-top: 30px;
+  margin-left: 10px;
+  padding: 5px;
+  list-style: circle;
+  list-style-position: inside;
+  color: #ffa600;
+  letter-spacing: .06em;
+  text-decoration: none;  
+  text-shadow: 2px 2px black;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
+  background-color: #D91828;
+}
+#burger-order li:hover{
+  color: #D91828;
+  cursor:pointer;
 }
 
 .green{
@@ -208,21 +236,44 @@ main section div img{
 .order-menu{
   margin-top: 30px;
   margin-left: 30px;
+  width: 1000px;
+  background-color: #fdc818;
 
 }
 .order-menu h3{
-  font-size: 1.2em;
+  font-size: 1.32em;
   font-weight: bold;
+  font-family: 'Bangers', cursive;
+  margin-top: 10px;
+  list-style: circle;
+  list-style-position: inside;
+  color:  #D91828;
+  letter-spacing: .06em;
+  text-decoration: none;  
+  text-shadow: 2px 2px black;
+  text-align: center;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
 }
 .order-menu ul{
   display: inline-table;
   margin-left: 30px;
   margin-bottom: 60px;
+  padding: 5px;
+  /* background-color: #F2B279 */
+  /* height: auto; */
 }
-.order-menu ul li{
+.order-menu ul li {
+  font-family: 'Bangers', cursive;
   margin-top: 30px;
   list-style: circle;
   list-style-position: inside;
+  /* color: #ffa600; */
+  letter-spacing: .06em;
+  /* text-decoration: none;  
+  text-shadow: 2px 2px black;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black; */
 }
 .order-menu ul li:hover{
   color: #D91828;
