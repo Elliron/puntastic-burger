@@ -10,7 +10,6 @@ var sidesElement = document.getElementById('sides');
 var menu = document.getElementById('menu');
 var retrieveBurger = localStorage.getItem('burgers');
 
-
 //click event variables
 var burgerBuilder = document.getElementById('burger-builder');
 var burgerOrder = document.getElementById('burger-order');
@@ -18,7 +17,6 @@ var checkOutButton = document.getElementById('checkout-button');
 var clickedMenuItem;
 
 var burgerConstructor = [];
-
 
 //global arrays use to populate the igridents menu and also make it easier to build the burger.
 var ingredients = {
@@ -80,20 +78,39 @@ function eventClick(event) {
 
   var str = clickParentId + 'Arr';
   //if what user clicks on is not .menu-item return nothing, else return the ingredient
-  if (clickClass === 'menu-item') {
-    addIngredientToBurger(clickedMenuItem, str, clickParentId);
-    burgerBuilderUpdater();
-    //console.log(`var inside clickevent ${clickedMenuItem}`);
-    //console.log(customBurger.burger);
-    //console.log(burgerConstructor);
+
+  console.log(clickClass);
+  console.log(clickParentId);
+  console.log(clickId);
+  console.log(clickedMenuItem);
+
+  if (burgerConstructor[0].buns.length < 1) {
+    if (clickParentId !== 'buns') {
+      console.log('Bun-jour! Please select a bun before continuing!');
+    } else if (clickParentId === 'buns') {
+      addIngredientToBurger(clickedMenuItem, str, clickParentId);
+      burgerBuilderUpdater();
+    }
+  } else {
+    if (clickClass === 'menu-item') {
+      addIngredientToBurger(clickedMenuItem, str, clickParentId);
+      burgerBuilderUpdater();
+      //console.log(`var inside clickevent ${clickedMenuItem}`);
+      //console.log(customBurger.burger);
+      //console.log(burgerConstructor);
+    }
+    if (burgerConstructor[0].buns.length > 1 && clickParentId === 'buns') {
+      burgerConstructor[0].buns.splice(0, 1);
+      burgerConstructor[0].burger.splice(0, 1);
+    }
   }
+
   if (clickId === clickedMenuItem) {
     removeItemfromOrder(clickedMenuItem, clickId);
   }
 
-
   //adding event click the ingredients menu and then adding it to the burger builder as a div with class. We will replace bgColor with image.jpg file dynamically
-  checkOut();
+
 }
 
 function checkOut() {
@@ -162,4 +179,5 @@ renderMenu();
 
 menu.addEventListener('click', eventClick);
 burgerOrder.addEventListener('click', eventClick);
-checkOutButton.addEventListener('click', eventClick);
+checkOutButton.addEventListener('click', checkOut);
+
