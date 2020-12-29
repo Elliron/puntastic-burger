@@ -10,9 +10,9 @@ html {
 }
 body {
   margin: 0;
+  background-image: url(../img/circle-bg.png);
 }
 
-logo,
 sidebar,
 footer,
 main,
@@ -29,15 +29,48 @@ sidebar{
   position: fixed;
   width:350px;
   height: 100%;
+  background-color: #D91828;
+  border-right: white 10px solid;
+  box-shadow: 3.5px 0 black;
 }
 
 sidebar logo img{
   margin: 10px 0 0 50px;
 }
 
-sidebar h2{
-  font-size: 2em;
+sidebar h1{
+
+  font-family: 'Bangers', cursive;
+  font-size: 3.5em;
+  margin-top: 30px;
+  letter-spacing: .08em;
+  text-align: center;
 }
+
+ sidebar h1 a{
+  color: #ffa600;
+  text-decoration: none;  
+  text-shadow: 3.5px 3.5px black;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+ }
+
+ sidebar h2{
+  font-family: 'Bangers', cursive;
+  font-size: 2em;
+  letter-spacing: .08em;
+  margin-top: 30px;
+  text-align: center;
+}
+ 
+sidebar nav li h2 a{
+  color: #ffa600;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
 
 sidebar h3{
   display: inline-block;
@@ -46,8 +79,8 @@ sidebar h3{
 }
 
 sidebar ul{
-  margin-left: 50px;
-  margin-top: 30px;
+  margin-top: 60px;
+  text-align: center;
 }
 
 sidebar ul li{
