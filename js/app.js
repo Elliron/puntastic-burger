@@ -8,9 +8,13 @@ var vegetablesElement = document.getElementById('vegetables');
 var saucesElement = document.getElementById('sauces');
 var sidesElement = document.getElementById('sides');
 var menu = document.getElementById('menu');
+var retrieveBurger = localStorage.getItem('burgers');
 
+
+//click event variables
 var burgerBuilder = document.getElementById('burger-builder');
 var burgerOrder = document.getElementById('burger-order');
+var checkOutButton = document.getElementById('checkout-button');
 var clickedMenuItem;
 
 var burgerConstructor = [];
@@ -44,7 +48,6 @@ function BurgerConstructor() {
 
 function menuBuilder(parentElement, arrContent) {
   //for loop to build out the menus
-  console.log(arrContent);
   for (var i = 0; i < arrContent.length; i++) {
     var menuElement = document.createElement('li');
     menuElement.textContent = arrContent[i];
@@ -65,7 +68,7 @@ function renderMenu() {
 }
 
 function eventClick(event) {
-
+  event.preventDefault();
   //getting the html class the user is clicking on and storing as varible
   var clickClass = event.target.classList[0];
   //getting the id of the parentelement
@@ -76,7 +79,6 @@ function eventClick(event) {
   clickedMenuItem = event.target.innerHTML;
 
   var str = clickParentId + 'Arr';
-  console.log(str);
   //if what user clicks on is not .menu-item return nothing, else return the ingredient
   if (clickClass === 'menu-item') {
     addIngredientToBurger(clickedMenuItem, str, clickParentId);
@@ -87,11 +89,20 @@ function eventClick(event) {
   }
   if (clickId === clickedMenuItem) {
     removeItemfromOrder(clickedMenuItem, clickId);
-    console.log('remove fired');
   }
 
-  //adding event click the ingredients menu and then adding it to the burger builder as a div with class. We will replace bgColor with image.jpg file dynamically
 
+  //adding event click the ingredients menu and then adding it to the burger builder as a div with class. We will replace bgColor with image.jpg file dynamically
+  checkOut();
+}
+
+function checkOut() {
+  var stringifiedBurger = JSON.stringify(burgerConstructor);
+  localStorage.setItem('burgers', stringifiedBurger);
+}
+
+function loadBurger() {
+  burgerConstructor = JSON.parse(retrieveBurger);
 }
 //we will need to create some logic that only allows user to click on one bun. Something like if bunSelected is true then alert user 'you cannot select another bun until you remove the current bun from your cart.
 
@@ -100,7 +111,6 @@ function eventClick(event) {
 function addIngredientToBurger(ingredient, ingredientArray, ingredientId) {
   for (var i in ingredients[ingredientArray]) {
     if (ingredient === ingredients[ingredientArray][i]) {
-      console.log(ingredients[ingredientArray][i]);
       //console.log(ingredientId);
       customBurger.burger.push(ingredients[ingredientArray][i]);
       customBurger[ingredientId].push(ingredients[ingredientArray][i]);
@@ -142,10 +152,14 @@ function removeItemfromOrder(ingredient, name) {
   //divElement.parentNode.removeChild(divElement);
 }
 
-
-var customBurger = new BurgerConstructor();
+if (retrieveBurger) {
+  loadBurger();
+} else {
+  var customBurger = new BurgerConstructor();
+}
 
 renderMenu();
 
 menu.addEventListener('click', eventClick);
 burgerOrder.addEventListener('click', eventClick);
+checkOutButton.addEventListener('click', eventClick);
