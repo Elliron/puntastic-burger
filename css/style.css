@@ -155,9 +155,11 @@ main p{
 }
 
 main section div{
-  width:250px;
+  width:400px;
   display: inline-block;
-  margin: 30px;
+  margin: 25px;
+  padding: 5px;
+
 }
 
 main section div h2{
