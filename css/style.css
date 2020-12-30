@@ -24,6 +24,19 @@ section{
   /* border: solid black 1px; */ /* just for building purposes */
 }
 
+section h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 3em;
+    text-align: center;
+    color: #ffa600;
+    text-decoration: none;  
+    text-shadow: 2.5px 2.5px black;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    margin: 0px auto;
+    padding-top: 30px;
+}
+
 /*-----------  sidebar styling ---------*/
 
 sidebar{
@@ -173,7 +186,7 @@ main section div img{
   background-repeat: no-repeat;
 }
 
-.burger-builder h2{
+/* .burger-builder h2{
   font-family: 'Bangers', cursive;
   font-size: 3em;
   text-align: center;
@@ -184,7 +197,7 @@ main section div img{
   -webkit-text-stroke-color: white;
   margin: 0px auto;
   padding-top: 30px;
-}
+} */
 
 #burger-order h3{
   display: inline-block;
@@ -367,4 +380,8 @@ font-weight: bold;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
   background-color: #D91828;
+}
+.order-summary button:hover {
+  color: #D91828;
+  cursor:pointer;
 }
