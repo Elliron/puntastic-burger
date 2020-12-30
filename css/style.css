@@ -155,9 +155,11 @@ main p{
 }
 
 main section div{
-  width:250px;
+  width:400px;
   display: inline-block;
-  margin: 30px;
+  margin: 25px;
+  padding: 5px;
+
 }
 
 main section div h2{
@@ -193,19 +195,6 @@ main section div img{
   background-position: center bottom;
   background-repeat: no-repeat;
 }
-
-/* .burger-builder h2{
-  font-family: 'Bangers', cursive;
-  font-size: 3em;
-  text-align: center;
-  color: #ffa600;
-  text-decoration: none;  
-  text-shadow: 2.5px 2.5px black;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
-  margin: 0px auto;
-  padding-top: 30px;
-} */
 
 #burger-order h3{
   display: inline-block;
@@ -392,4 +381,61 @@ font-weight: bold;
 .order-summary button:hover {
   color: #D91828;
   cursor:pointer;
+}
+
+/*------------  about main styling   ---------- */
+
+.about img {
+  width: 250px;
+  height: 250px;
+  border-radius: 25px;
+}
+
+.about h1 {
+  font-family: 'Bangers', cursive;
+  font-size: 5em;
+  text-align: center;
+  color: #ffa600;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  margin: 0px auto;
+  padding-top: 30px;
+}
+.about h3 {
+  font-family: 'Bangers', cursive;
+  font-size: 2em;
+  text-align: center;
+  color: #ffa600;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  margin: 0px auto;
+  padding-top: 30px;
+}
+
+.about div {
+  border-radius: 25px;
+  background-color: white;
+  padding: 25px;
+  display: inline-block;
+  border: solid black 2px;
+}
+.about p {
+  font-size: 1em;
+  text-align: center;
+  margin: 0px auto;
+  padding-top: 30px;
+
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+  margin-top: 15em;
 }
