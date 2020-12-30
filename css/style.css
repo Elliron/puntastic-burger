@@ -167,20 +167,26 @@ main section div img{
   position: relative;
 
   width: 960px;
-  height: 600px;
+  height: 400px;
   background-image: url("../img/cutting-board.png");
   background-position: center bottom;
   background-repeat: no-repeat;
 
 }
 
-.base div{
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  left: 350px;
-
+.burger-builder h2{
+  font-family: 'Bangers', cursive;
+  font-size: 3em;
+  text-align: center;
+  color: #ffa600;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  margin: 0px auto;
+  padding-top: 30px;
 }
+
 #burger-order h3{
   display: inline-block;
   font-size: 1.32em;
@@ -218,20 +224,13 @@ main section div img{
   cursor:pointer;
 }
 
-.green{
-  background-color: green;
-  top: 250px;
-  z-index: 1;
-}
-.red{
-  background-color: red;
-  top: 200px;
-  z-index: 2;
-}
-.blue{
-  background-color: blue;
-  top: 150px;
-  z-index: 3;
+.base img{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  
+
 }
 .order-menu{
   margin-top: 30px;
