@@ -14,7 +14,7 @@ var retrieveBurger = localStorage.getItem('burgers');
 var burgerBuilder = document.getElementById('burger-builder');
 var burgerOrder = document.getElementById('burger-order');
 var checkOutButton = document.getElementById('checkout-button');
-var clickedMenuItem;
+var clickedMenuItem, topBun;
 
 var burgerConstructor = [];
 
@@ -24,9 +24,9 @@ var ingredients = {
 
   meatsArr: ['Single Patty', 'Double Patty', 'Triple Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg', 'Pull Pork'],
 
-  cheeseArr: ['Chedder', 'American', 'Blue Cheese', 'Gouda', 'Pepper Jack', 'Swiss'],
+  cheeseArr: ['Cheddar', 'American', 'Blue Cheese', 'Gouda', 'Pepper Jack', 'Swiss'],
 
-  vegetablesArr: ['Pickles', 'Totmato', 'Onion', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'],
+  vegetablesArr: ['Pickles', 'Totmato', 'Onions', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'],
 
   saucesArr: ['Ketchup', 'Mustard', 'Mayo', 'BBQ', 'Caribbean Jerk', 'Chipotle', 'Sriracha', 'Southwest', 'Ghost Pepper'],
 
@@ -75,17 +75,11 @@ function eventClick(event) {
   var clickId = event.target.id;
   //getting the name of the ingredient
   clickedMenuItem = event.target.innerHTML;
+  //replacing spaces with - and lower casing all letters
   var clickedMenuItemfiltered = clickedMenuItem.replace(/\s+/g, '-').toLowerCase();
-
-  console.log(clickedMenuItemfiltered);
 
   var str = clickParentId + 'Arr';
   //if what user clicks on is not .menu-item return nothing, else return the ingredient
-
-  console.log(clickClass);
-  console.log(clickParentId);
-  console.log(clickId);
-  console.log(clickedMenuItem);
 
   if (burgerConstructor[0].buns.length < 1) {
     if (clickParentId !== 'buns') {
@@ -93,14 +87,16 @@ function eventClick(event) {
     } else if (clickParentId === 'buns') {
       addIngredientToBurger(clickedMenuItem, str, clickParentId);
       burgerBuilderUpdater(clickedMenuItemfiltered);
+      topBun = document.createElement('img');
+      //divElement.className = clickedMenuItem;
+      topBun.id = 'topBun';
+      topBun.src = `img/${clickedMenuItemfiltered}-top.png`;
+      burgerBuilder.appendChild(topBun);
     }
   } else {
-    if (clickClass === 'menu-item') {
+    if (clickClass === 'menu-item' && clickParentId !== 'buns') {
       addIngredientToBurger(clickedMenuItem, str, clickParentId);
       burgerBuilderUpdater(clickedMenuItemfiltered);
-      //console.log(`var inside clickevent ${clickedMenuItem}`);
-      //console.log(customBurger.burger);
-      //console.log(burgerConstructor);
     }
     if (burgerConstructor[0].buns.length > 1 && clickParentId === 'buns') {
       burgerConstructor[0].buns.splice(0, 1);
@@ -111,9 +107,6 @@ function eventClick(event) {
   if (clickId === clickedMenuItem) {
     removeItemfromOrder(clickedMenuItem, clickId);
   }
-
-  //adding event click the ingredients menu and then adding it to the burger builder as a div with class. We will replace bgColor with image.jpg file dynamically
-
 }
 
 function checkOut() {
@@ -139,15 +132,23 @@ function addIngredientToBurger(ingredient, ingredientArray, ingredientId) {
 }
 
 function burgerBuilderUpdater(image) {
+  var indexCounter;
+  if (customBurger.burger.length < 2) {
+    indexCounter = 70;
+  } else {
+    indexCounter = customBurger.burger.length * 15 + 70;
+    topBun.style.bottom = `${indexCounter + 20}px`;
+    topBun.style.zIndex = customBurger.burger.length + 2;
+  }
+
+  console.log(indexCounter);
   var divElement = document.createElement('img');
   //divElement.className = clickedMenuItem;
   divElement.id = image;
   divElement.src = `img/${image}.png`;
   burgerBuilder.appendChild(divElement);
-  divElement.style.top = `${100}px`; //this needs to be dynamic
-
-  // divElement.style.backgroundImage = `../imgs/${image}.png`; // this should be background image
-  //zindex will use the array index of the element.
+  //changing the bottom position of the img
+  divElement.style.bottom = `${indexCounter}px`;
   divElement.style.zIndex = customBurger.burger.length + 1;
 
   //add x for end user to delete ingredients
@@ -170,6 +171,9 @@ function removeItemfromOrder(ingredient, name) {
   }
   var liElement = document.getElementById(name);
   liElement.parentNode.removeChild(liElement);
+
+  var imgElement = document.getElementById(name);
+  imgElement.parentNode.removeChild(imgElement);
   //console.log(customBurger.burger);
   //divElement.parentNode.removeChild(divElement);
 }

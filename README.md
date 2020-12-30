@@ -14,7 +14,9 @@ https://docs.google.com/document/d/1-wXdThU7BKKI3SgDMXq-Hmtin9k9KAJH4N-AiXrc_bg/
 * Chance Harmon
 
 ## Resources
- https://rynnnaa.github.io/Pizza-Mania/index.html
+ * https://rynnnaa.github.io/Pizza-Mania/index.html
+
+ * str.replace(/\s+/g, '-').toLowerCase() - https://stackoverflow.com/questions/1983648/replace-spaces-with-dashes-and-make-all-letters-lower-case
  
 
 ## Wireframes:
