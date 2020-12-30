@@ -62,6 +62,17 @@ sidebar h1{
   margin-top: 30px;
   text-align: center;
 }
+
+sidebar nav ul li a{
+  color: white;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+}
+
+sidebar nav ul li img{
+ 
+  box-shadow: 2.5px 2.5px black;
+}
  
 sidebar nav li h2 a{
   color: #ffa600;
@@ -84,7 +95,11 @@ sidebar ul{
 }
 
 sidebar ul li{
+  font-size: 1.2em;
+  color: white;
+  font-weight: bold;
   margin-top: 5px;
+  text-shadow: 2.5px 2.5px black;
 }
 
 sidebar img{
@@ -92,7 +107,8 @@ sidebar img{
 }
 
 sidebar footer{
-  margin-top: 200px;
+  color:white;
+  margin-top: 100px;
 }
 
 sidebar footer p{
@@ -104,11 +120,20 @@ main{
   width: 960px;
   margin: 0 auto 0 auto;
   padding-left: 350px;
-}
-
-main h2{
-  font-size: 2em;
+} 
+#pun-of-the-day{
+  font-size: 2.5em;
   text-align: center;
+  font-family: 'Bangers', cursive;
+  text-align: center;
+  color: #ffa600;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+.pun-of-the-day {
+  width: 80%;
 }
 main p{
   text-align: center;
@@ -121,9 +146,16 @@ main section div{
 }
 
 main section div h2{
-  font-size: 2em;
+  font-family: 'Bangers', cursive;
+  font-size: 3em;
   text-align: center;
+  color: #ffa600;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
 }
+
 
 main section div img{
   margin-top:10px;
@@ -135,64 +167,198 @@ main section div img{
 /*------------  burger-constructor main styling   ---------- */
 .base{
   position: relative;
-  background-color: blueviolet;
+
   width: 960px;
-  height: 600px;
+  height: 400px;
+  background-image: url("../img/cutting-board.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
 
 }
 
-.base div{
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  left: 350px;
-
+.burger-builder h2{
+  font-family: 'Bangers', cursive;
+  font-size: 3em;
+  text-align: center;
+  color: #ffa600;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  margin: 0px auto;
+  padding-top: 30px;
 }
 
 #burger-order h3{
   display: inline-block;
+  font-size: 1.32em;
+  font-weight: bold;
+  font-family: 'Bangers', cursive;
+  margin-top: 30px;
+  list-style: circle;
+  list-style-position: inside;
+  color: #ffa600;
+  letter-spacing: .06em;
+  text-decoration: none;  
+  text-shadow: 2px 2px black;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
 }
 
 #burger-order li{
   display: inline-block;
+  font-family: 'Bangers', cursive;
+  margin-top: 30px;
+  margin-left: 10px;
+  padding: 5px;
+  list-style: circle;
+  list-style-position: inside;
+  color: #ffa600;
+  letter-spacing: .06em;
+  text-decoration: none;  
+  text-shadow: 2px 2px black;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
+  background-color: #D91828;
+}
+#burger-order li:hover{
+  color: #D91828;
+  cursor:pointer;
 }
 
-.green{
-  background-color: green;
-  top: 250px;
-  z-index: 1;
+#checkout-button:hover {
+  box-shadow: 0px 0px 6px rgba(255, 255, 255, 1); 
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10 rgba(0, 0, 0, 0.57);
+  transition: all 0.4s ease 0s;
 }
-.red{
-  background-color: red;
-  top: 200px;
-  z-index: 2;
+
+#checkout-button {
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+  background-image: url(../img/123.jpg);
+  background-repeat: no-repeat;
+  background-size: 200px 100px;
+  text-align: center;
 }
-.blue{
-  background-color: blue;
-  top: 150px;
-  z-index: 3;
+
+#checkout-button h4 {
+margin-top: 40px;
+font-size: 20px;
+font-weight: bold;
+}
+
+.base img{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 .order-menu{
   margin-top: 30px;
   margin-left: 30px;
+  width: 1000px;
+  background-color: #fdc818;
 
 }
 .order-menu h3{
-  font-size: 1.2em;
+  font-size: 1.32em;
   font-weight: bold;
+  font-family: 'Bangers', cursive;
+  margin-top: 10px;
+  list-style: circle;
+  list-style-position: inside;
+  color:  #D91828;
+  letter-spacing: .06em;
+  text-decoration: none;  
+  text-shadow: 2px 2px black;
+  text-align: center;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
 }
 .order-menu ul{
   display: inline-table;
   margin-left: 30px;
   margin-bottom: 60px;
+  padding: 5px;
+  /* background-color: #F2B279 */
+  /* height: auto; */
 }
-.order-menu ul li{
+.order-menu ul li {
+  font-family: 'Bangers', cursive;
   margin-top: 30px;
   list-style: circle;
   list-style-position: inside;
+  /* color: #ffa600; */
+  letter-spacing: .06em;
+  /* text-decoration: none;  
+  text-shadow: 2px 2px black;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black; */
 }
 .order-menu ul li:hover{
   color: #D91828;
   cursor:pointer;
 }
 
+/*------------  checkout main styling   ---------- */
+
+.order-summary {
+  font-family: 'Bangers', cursive;
+  margin: auto;
+  margin-top: 2em;
+  width: 400px;
+  text-align: center;
+  color: #ffa600;
+  letter-spacing: .5em;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: white;
+  /* background-color: #1CA698; */
+}
+.order-summary h3 {
+  font-size: 3em;
+  font-weight: bold;
+  padding: .1em;
+  border: solid black 1px;
+  background-color: #D91828;
+}
+
+.order-summary h4 {
+  font-size: 3em;
+  font-weight: bold;
+  border: solid black 1px;
+  border-top: 0px;
+  border-bottom: 0px;
+  padding: .1em;
+  background-color: #1CA698;
+}
+.order-summary ul {
+  border: solid black 1px;
+  border-top: 0px;
+  background-color: #1CA698;
+  padding-bottom: 20px;
+}
+.order-summary li {
+  padding: .2em;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+.order-summary button {
+  font-family: 'Bangers', cursive;
+  font-size: 5em;
+  font-weight: bold;
+  margin: auto;
+  width: 400px;
+  color: #ffa600;
+  letter-spacing: .08em;
+  text-decoration: none;  
+  text-shadow: 2.5px 2.5px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  background-color: #D91828;
+}
