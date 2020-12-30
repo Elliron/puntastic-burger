@@ -218,6 +218,30 @@ main section div img{
   cursor:pointer;
 }
 
+#checkout-button:hover {
+  box-shadow: 0px 0px 6px rgba(255, 255, 255, 1); 
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10 rgba(0, 0, 0, 0.57);
+  transition: all 0.4s ease 0s;
+}
+
+#checkout-button {
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+  background-image: url(../img/123.jpg);
+  background-repeat: no-repeat;
+  background-size: 200px 100px;
+  text-align: center;
+}
+
+#checkout-button h4 {
+margin-top: 40px;
+font-size: 20px;
+font-weight: bold;
+}
+
 .green{
   background-color: green;
   top: 250px;
