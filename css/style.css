@@ -132,7 +132,9 @@ main{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
 }
-
+.pun-of-the-day {
+  width: 80%;
+}
 main p{
   text-align: center;
   
