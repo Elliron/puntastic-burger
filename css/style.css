@@ -422,6 +422,7 @@ font-weight: bold;
   padding: 25px;
   display: inline-block;
   border: solid black 2px;
+  width: 250px;
 }
 .about p {
   font-size: 1em;
