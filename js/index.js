@@ -5,7 +5,7 @@ var punOneElement = document.getElementById('pun-of-the-day');
 var punArray = [
   'Did you know that sesame seeds are the secret to a burgers success? Ever since they were introduced, they have been on a roll!',
   'Single burger?  Let me introduce you to my friend... Meat Patty!',
-  'Our ham is the best around! Although, it would be a shame if you put an s at the beginning and an e at the end.',
+  'Our ham is the best around! Although, it would be a shame if you put an "s" at the beginning and an "e" at the end.',
   'Did you know that even cavemen made bacon from dinosaurs?  It was Jurassic Pork.',
   'Please egg-scuse us for all the puns... we figured everyone loves yolks!',
   'Sweet dreams are made of cheese',

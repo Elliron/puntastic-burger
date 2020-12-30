@@ -14,7 +14,7 @@ var retrieveBurger = localStorage.getItem('burgers');
 var burgerBuilder = document.getElementById('burger-builder');
 var burgerOrder = document.getElementById('burger-order');
 var checkOutButton = document.getElementById('checkout-button');
-var clickedMenuItem, topBun;
+var clickedMenuItem, topBun, indexCounter;
 
 var burgerConstructor = [];
 
@@ -22,13 +22,13 @@ var burgerConstructor = [];
 var ingredients = {
   bunsArr: ['Sesame seed', 'Brioche', 'Pretzel', 'Hawaiian roll', 'Kaiser roll'],
 
-  meatsArr: ['Single Patty', 'Double Patty', 'Triple Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg', 'Pull Pork'],
+  meatsArr: ['Single Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg'],
 
-  cheeseArr: ['Cheddar', 'American', 'Blue Cheese', 'Gouda', 'Pepper Jack', 'Swiss'],
+  cheeseArr: ['Cheddar', 'American', 'Gouda', 'Pepper Jack', 'Swiss'],
 
-  vegetablesArr: ['Pickles', 'Totmato', 'Onions', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'],
+  vegetablesArr: ['Pickles', 'Tomato', 'Onions', 'Avacado', 'Pineapple', 'Jalepenos', 'Lettuce'],
 
-  saucesArr: ['Ketchup', 'Mustard', 'Mayo', 'BBQ', 'Caribbean Jerk', 'Chipotle', 'Sriracha', 'Southwest', 'Ghost Pepper'],
+  saucesArr: ['Ketchup', 'Mustard', 'Mayo', 'BBQ'],
 
   sidesArr: ['Fries', 'Tots', 'Onion Rings', 'Sweet Potato Fries', 'Waffle Fries', 'Soft Drink', 'Tea', 'Lemonade', 'Water'],
 };
@@ -67,14 +67,14 @@ function renderMenu() {
 
 function eventClick(event) {
   event.preventDefault();
+  //getting the name of the ingredient
+  clickedMenuItem = event.target.innerHTML;
   //getting the html class the user is clicking on and storing as varible
   var clickClass = event.target.classList[0];
   //getting the id of the parentelement
   var clickParentId = event.target.parentNode.id;
   //getting the id of the clicked element
   var clickId = event.target.id;
-  //getting the name of the ingredient
-  clickedMenuItem = event.target.innerHTML;
   //replacing spaces with - and lower casing all letters
   var clickedMenuItemfiltered = clickedMenuItem.replace(/\s+/g, '-').toLowerCase();
 
@@ -91,21 +91,22 @@ function eventClick(event) {
       //divElement.className = clickedMenuItem;
       topBun.id = 'topBun';
       topBun.src = `img/${clickedMenuItemfiltered}-top.png`;
+      topBun.style.bottom = `${110}px`;
+      topBun.style.zIndex = 2;
       burgerBuilder.appendChild(topBun);
     }
-  } else {
-    if (clickClass === 'menu-item' && clickParentId !== 'buns') {
-      addIngredientToBurger(clickedMenuItem, str, clickParentId);
-      burgerBuilderUpdater(clickedMenuItemfiltered);
-    }
-    if (burgerConstructor[0].buns.length > 1 && clickParentId === 'buns') {
-      burgerConstructor[0].buns.splice(0, 1);
-      burgerConstructor[0].burger.splice(0, 1);
-    }
+  } else if (clickClass === 'menu-item' && clickParentId !== 'buns') {
+    addIngredientToBurger(clickedMenuItem, str, clickParentId);
+    burgerBuilderUpdater(clickedMenuItemfiltered);
   }
 
-  if (clickId === clickedMenuItem) {
-    removeItemfromOrder(clickedMenuItem, clickId);
+  else if (burgerConstructor[0].buns.length > 1 && clickParentId === 'buns') {
+    burgerConstructor[0].buns.splice(0, 1);
+    burgerConstructor[0].burger.splice(0, 1);
+  }
+
+  else if (clickId === clickedMenuItem) {
+    removeItemfromOrder(clickedMenuItem, clickId, clickedMenuItemfiltered);
   }
 }
 
@@ -117,9 +118,6 @@ function checkOut() {
 function loadBurger() {
   burgerConstructor = JSON.parse(retrieveBurger);
 }
-//we will need to create some logic that only allows user to click on one bun. Something like if bunSelected is true then alert user 'you cannot select another bun until you remove the current bun from your cart.
-
-//something like if (customerBurger.bun.length - 1) select a bun, else bun already selected... the same logic can be applied to toppings. This could be used to calculate charging $0.50 per addtional ingredient.
 
 function addIngredientToBurger(ingredient, ingredientArray, ingredientId) {
   for (var i in ingredients[ingredientArray]) {
@@ -132,7 +130,6 @@ function addIngredientToBurger(ingredient, ingredientArray, ingredientId) {
 }
 
 function burgerBuilderUpdater(image) {
-  var indexCounter;
   if (customBurger.burger.length < 2) {
     indexCounter = 70;
   } else {
@@ -140,13 +137,11 @@ function burgerBuilderUpdater(image) {
     topBun.style.bottom = `${indexCounter + 20}px`;
     topBun.style.zIndex = customBurger.burger.length + 2;
   }
-
-  console.log(indexCounter);
   var divElement = document.createElement('img');
-  //divElement.className = clickedMenuItem;
   divElement.id = image;
   divElement.src = `img/${image}.png`;
   burgerBuilder.appendChild(divElement);
+
   //changing the bottom position of the img
   divElement.style.bottom = `${indexCounter}px`;
   divElement.style.zIndex = customBurger.burger.length + 1;
@@ -158,24 +153,26 @@ function burgerBuilderUpdater(image) {
   burgerOrder.appendChild(liElement);
 }
 
-function removeItemfromOrder(ingredient, name) {
+function removeItemfromOrder(ingredient, name, filteredName) {
   for (var i in customBurger.burger) {
     if (ingredient === customBurger.burger[i]) {
       customBurger.burger.splice(i, 1);
       customBurger.meats.splice(i, 1);
       customBurger.cheese.splice(i, 1);
-      customBurger.vegatables.splice(i, 1);
+      customBurger.vegetables.splice(i, 1);
       customBurger.sauces.splice(i, 1);
       console.log('splices are firing');
     }
   }
+
   var liElement = document.getElementById(name);
   liElement.parentNode.removeChild(liElement);
 
-  var imgElement = document.getElementById(name);
-  imgElement.parentNode.removeChild(imgElement);
-  //console.log(customBurger.burger);
-  //divElement.parentNode.removeChild(divElement);
+  var divElement = document.getElementById(filteredName);
+  divElement.parentNode.removeChild(divElement);
+
+  var position = parseInt(topBun.style.bottom);
+  topBun.style.bottom = `${position - 15}px`;
 }
 
 if (retrieveBurger) {
@@ -189,4 +186,3 @@ renderMenu();
 menu.addEventListener('click', eventClick);
 burgerOrder.addEventListener('click', eventClick);
 checkOutButton.addEventListener('click', checkOut);
-
