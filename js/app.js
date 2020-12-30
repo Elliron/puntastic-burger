@@ -22,13 +22,13 @@ var burgerConstructor = [];
 var ingredients = {
   bunsArr: ['Sesame seed', 'Brioche', 'Pretzel', 'Hawaiian roll', 'Kaiser roll'],
 
-  meatsArr: ['Single Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg', 'Pull Pork'],
+  meatsArr: ['Single Patty', 'Ham', 'Bacon', 'Plant Based', 'Egg'],
 
-  cheeseArr: ['Cheddar', 'American', 'Blue Cheese', 'Gouda', 'Pepper Jack', 'Swiss'],
+  cheeseArr: ['Cheddar', 'American', 'Gouda', 'Pepper Jack', 'Swiss'],
 
-  vegetablesArr: ['Pickles', 'Totmato', 'Onions', 'Avacado', 'Pineapple', 'Jalepenos', 'Red Bell Pepper', 'Lettuce', 'Baby Spinach', 'Kale'],
+  vegetablesArr: ['Pickles', 'Tomato', 'Onions', 'Avacado', 'Pineapple', 'Jalepenos', 'Lettuce'],
 
-  saucesArr: ['Ketchup', 'Mustard', 'Mayo', 'BBQ', 'Caribbean Jerk', 'Chipotle', 'Sriracha', 'Southwest', 'Ghost Pepper'],
+  saucesArr: ['Ketchup', 'Mustard', 'Mayo', 'BBQ'],
 
   sidesArr: ['Fries', 'Tots', 'Onion Rings', 'Sweet Potato Fries', 'Waffle Fries', 'Soft Drink', 'Tea', 'Lemonade', 'Water'],
 };
@@ -67,15 +67,14 @@ function renderMenu() {
 
 function eventClick(event) {
   event.preventDefault();
-
+  //getting the name of the ingredient
+  clickedMenuItem = event.target.innerHTML;
   //getting the html class the user is clicking on and storing as varible
   var clickClass = event.target.classList[0];
   //getting the id of the parentelement
   var clickParentId = event.target.parentNode.id;
   //getting the id of the clicked element
   var clickId = event.target.id;
-  //getting the name of the ingredient
-  clickedMenuItem = event.target.innerHTML;
   //replacing spaces with - and lower casing all letters
   var clickedMenuItemfiltered = clickedMenuItem.replace(/\s+/g, '-').toLowerCase();
 
@@ -131,7 +130,6 @@ function addIngredientToBurger(ingredient, ingredientArray, ingredientId) {
 }
 
 function burgerBuilderUpdater(image) {
-
   if (customBurger.burger.length < 2) {
     indexCounter = 70;
   } else {
@@ -139,12 +137,11 @@ function burgerBuilderUpdater(image) {
     topBun.style.bottom = `${indexCounter + 20}px`;
     topBun.style.zIndex = customBurger.burger.length + 2;
   }
-
   var divElement = document.createElement('img');
-  //divElement.className = clickedMenuItem;
   divElement.id = image;
   divElement.src = `img/${image}.png`;
   burgerBuilder.appendChild(divElement);
+
   //changing the bottom position of the img
   divElement.style.bottom = `${indexCounter}px`;
   divElement.style.zIndex = customBurger.burger.length + 1;
